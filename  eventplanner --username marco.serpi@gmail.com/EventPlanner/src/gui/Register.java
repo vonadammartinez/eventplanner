@@ -1,16 +1,6 @@
 package gui;
 
 import java.awt.EventQueue;
-import java.awt.Window;
-
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JTextPane;
-import java.awt.SystemColor;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class Register {
 
@@ -35,12 +25,11 @@ public class Register {
 	 * Launch the application.
 	 */
 
-
 	/**
 	 * Create the application.
 	 */
 	public Register() {
-		
+
 		initialize();
 	}
 
@@ -95,18 +84,22 @@ public class Register {
 				String firstName = textField_2.getText();
 				String lastName = textField_3.getText();
 				String dateOfBirth = textField_4.getText();
+
 				
-				/**if (userName == null || passWord == null || firstName == null || lastName == null || dateOfBirth == null){
-					
-					JOptionPane.showMessageDialog(null, "Bitte alle Felder ausfüllen", "FAIL!!", JOptionPane.OK_CANCEL_OPTION);
-					
-				}else{
-// Hier kommt noch der Code für die weitere Verwendung der Strings
-				
-			
-				
-				
-				}**/
+				  if (userName.equals("") || passWord.equals("") || firstName.equals("") || lastName.equals("") || dateOfBirth.equals("")){
+					  
+				  JOptionPane.showMessageDialog(null,"Bitte alle Felder ausfÃ¼llen", "FAIL!!",JOptionPane.OK_CANCEL_OPTION);
+				  
+				 }else{ // Hier kommt noch der Code fÃ¼r die weitere Verwendung der Strings
+					 UserSession.Registration(userName, passWord, firstName, lastName, dateOfBirth);
+					 
+					 GuiController.Loginstarter();
+					 
+					 
+					 frame.dispose();
+					 
+				 }
+				 
 			}
 		});
 		btnRegister.setBounds(176, 213, 89, 23);
@@ -139,8 +132,9 @@ public class Register {
 		textPane = new JTextPane();
 		textPane.setBackground(SystemColor.control);
 		textPane.setText("Date of birth:");
-		textPane.setBounds(96, 174, 72, 20);
+		textPane.setBounds(96, 174, 80, 20);
 		frame.getContentPane().add(textPane);
 	}
 
 }
+
