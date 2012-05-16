@@ -1,6 +1,8 @@
 package gui;
 
-import java.awt.EventQueue;
+import java.awt.SystemColor;
+
+import javax.swing.*;
 
 public class Location {
 
