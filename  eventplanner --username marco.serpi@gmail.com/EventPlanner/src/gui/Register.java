@@ -1,6 +1,13 @@
 package gui;
 
-import java.awt.EventQueue;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+import bl.GuiController;
+import bl.UserSession;
 
 public class Register {
 
