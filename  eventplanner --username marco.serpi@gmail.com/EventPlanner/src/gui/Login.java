@@ -56,13 +56,22 @@ public class Login {
 			public void actionPerformed(ActionEvent e) {
 				String userName = textField.getText();
 				String passWord = textField_1.getText();
-				
-				if(userName.equals("")|| passWord.equals("")){
-					JOptionPane.showMessageDialog(null,"Bitte alle Felder ausfüllen", "FAIL!!",JOptionPane.OK_CANCEL_OPTION);
-				}else{
-				
-				UserSession us = new UserSession(userName, passWord);
+
+				if (userName.equals("") || passWord.equals("")) {
+					JOptionPane.showMessageDialog(null,
+							"Bitte alle Felder ausfüllen", "FAIL!!",
+							JOptionPane.OK_CANCEL_OPTION);
+				} else {
+
+					UserSession.getInstance().login(userName, passWord);
+					if (true) {
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"Login failed! Wrong Username or Password",
+								"Error", JOptionPane.OK_CANCEL_OPTION);
+					}
 				}
+
 			}
 		});
 		btnLogin.setBounds(195, 131, 89, 23);
@@ -94,4 +103,3 @@ public class Login {
 		frame.getContentPane().add(txtpnPassword);
 	}
 }
-

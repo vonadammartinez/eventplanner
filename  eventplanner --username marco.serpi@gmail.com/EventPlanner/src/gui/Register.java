@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import model.User;
+
 import bl.GuiController;
 import bl.UserSession;
 
@@ -22,6 +24,7 @@ public class Register {
 	private JTextPane textPane_2;
 	private JTextPane textPane_3;
 	private JTextPane textPane;
+	private User u;
 	private String Username;
 	private String Password;
 	private String DateOfBirth;
@@ -98,7 +101,7 @@ public class Register {
 				  JOptionPane.showMessageDialog(null,"Bitte alle Felder ausfüllen", "FAIL!!",JOptionPane.OK_CANCEL_OPTION);
 				  
 				 }else{ // Hier kommt noch der Code für die weitere Verwendung der Strings
-					 UserSession.Registration(userName, passWord, firstName, lastName, dateOfBirth);
+					 
 					 
 					 GuiController.Loginstarter();
 					 
