@@ -2,7 +2,10 @@ package bl;
 
 import db.LocationDAO;
 
+
+
 public class LocationSession {
+	
 	
 	private LocationDAO ldao = new LocationDAO();
 	
