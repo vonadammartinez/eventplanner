@@ -14,10 +14,6 @@ public class UserDAO {
 
 	private String answer;
 
-	public UserDAO() {
-
-	}
-
 	public User login(String userName, String passWord) {
 		answer = DB_Connector
 				.request("SELECT * FROM tbl_user WHERE username = " + userName
@@ -45,10 +41,19 @@ public class UserDAO {
 				.request("SELECT * FROM tbl_user WHERE username = " + userName);
 
 		if (answer == "") {
-			DB_Connector.request("INSERT INTO tbl_user(" + userName + passWord
-					+ firstName + lastName + dateOfBirth);
+			DB_Connector
+					.request("INSERT INTO tbl_user(username, password, firstname, lastname, dateofbirth) VALUES ("
+							+ userName
+							+ passWord
+							+ firstName
+							+ lastName
+							+ dateOfBirth + ")");
+			User u = new User(userName, passWord, firstName, lastName,
+					dateOfBirth);
+			return u;
+		} else {
+			return null;
 		}
 
-		return null;
 	}
 }
