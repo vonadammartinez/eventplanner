@@ -16,8 +16,7 @@ public class Login {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextPane txtpnPassword;
-	private String userName;
-	private String passWord;
+
 
 	/**
 	 * Launch the application.
@@ -58,17 +57,17 @@ public class Login {
 				String passWord = textField_1.getText();
 
 				if (userName.equals("") || passWord.equals("")) {
-					JOptionPane.showMessageDialog(null,
-							"Bitte alle Felder ausfüllen", "FAIL!!",
-							JOptionPane.OK_CANCEL_OPTION);
+					JOptionPane.showMessageDialog(null,"Please fill in all required fields", "Error!",JOptionPane.OK_CANCEL_OPTION);
 				} else {
 
 					UserSession.getInstance().login(userName, passWord);
-					if (true) {
-					} else {
+					if (userName.equals(null)) {
 						JOptionPane.showMessageDialog(null,
 								"Login failed! Wrong Username or Password",
 								"Error", JOptionPane.OK_CANCEL_OPTION);
+					} else {
+						GuiController.EventListstarter();
+						frame.dispose();
 					}
 				}
 

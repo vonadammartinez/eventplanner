@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import bl.EventSession;
 import bl.GuiController;
 
 public class CreateEvent {
@@ -78,16 +79,10 @@ public class CreateEvent {
 		lblAgeRestriction.setBounds(45, 273, 114, 14);
 		frame.getContentPane().add(lblAgeRestriction);
 
-		JRadioButton rdbtnNone = new JRadioButton("None");
-		rdbtnNone.setBounds(45, 294, 109, 23);
-		frame.getContentPane().add(rdbtnNone);
-
-		JRadioButton rdbtnYes = new JRadioButton("Yes");
-		rdbtnYes.setBounds(45, 320, 46, 23);
-		frame.getContentPane().add(rdbtnYes);
-
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(99, 324, 60, 20);
+		final JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"0", "16", "18", "21", "30"}));
+		comboBox_1.setToolTipText("");
+		comboBox_1.setBounds(45, 298, 60, 20);
 		frame.getContentPane().add(comboBox_1);
 
 		JButton btnCreate = new JButton("Create");
@@ -95,13 +90,19 @@ public class CreateEvent {
 			public void actionPerformed(ActionEvent e) {
 				String name = textField.getText();
 				String date = textField_1.getText();
-				String location = comboBox.getToolTipText();
+				//Location location = comboBox.getSelectedItem(Location);
+				 int ageRestriction = comboBox_1.getSelectedIndex();
+				 
 				
-				if (name.equals("") || date.equals("") || location.equals("")){
+				
+				
+				if (name.equals("") || date.equals("")){
 					
-					  JOptionPane.showMessageDialog(null,"Bitte alle Felder ausfüllen", "FAIL!!",JOptionPane.OK_CANCEL_OPTION);
+					  JOptionPane.showMessageDialog(null,"Please fill in all required fields", "Error!",JOptionPane.OK_CANCEL_OPTION);
 				}else{
-							//Hier kommt der Code rein um die Strings weiter zu verarbeiten.
+							EventSession es = new EventSession();
+							//es.createEvent(name, date, location, ageRestriction);
+							//System.out.println("do man : " + ageRestriction);
 					
 				}
 				
@@ -113,14 +114,14 @@ public class CreateEvent {
 		JButton btnDiscard = new JButton("Discard");
 		btnDiscard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GuiController.CreateEventstarter();
+				GuiController.EventListstarter();
 				frame.dispose();
 			}
 		});
 		btnDiscard.setBounds(196, 379, 89, 23);
 		frame.getContentPane().add(btnDiscard);
 
-		JLabel lblLoggedInAs = new JLabel("Logged in as: --");
+		JLabel lblLoggedInAs = new JLabel("Logged in as:--");
 		lblLoggedInAs.setBounds(494, 11, 79, 14);
 		frame.getContentPane().add(lblLoggedInAs);
 	}

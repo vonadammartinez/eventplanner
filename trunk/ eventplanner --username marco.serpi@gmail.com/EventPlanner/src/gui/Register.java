@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import model.User;
 
 import bl.GuiController;
 import bl.UserSession;
@@ -24,12 +23,8 @@ public class Register {
 	private JTextPane textPane_2;
 	private JTextPane textPane_3;
 	private JTextPane textPane;
-	private User u;
-	private String Username;
-	private String Password;
-	private String DateOfBirth;
-	private String FirstName;
-	private String LastName;
+	
+
 
 	/**
 	 * Launch the application.
@@ -55,6 +50,7 @@ public class Register {
 		frame.getContentPane().setLayout(null);
 
 		JTextPane txtpnPleaseEnterYour = new JTextPane();
+		txtpnPleaseEnterYour.setEditable(false);
 		txtpnPleaseEnterYour.setBackground(SystemColor.control);
 		txtpnPleaseEnterYour
 				.setText("Please enter your personal information below");
@@ -98,9 +94,9 @@ public class Register {
 				
 				  if (userName.equals("") || passWord.equals("") || firstName.equals("") || lastName.equals("") || dateOfBirth.equals("")){
 					  
-				  JOptionPane.showMessageDialog(null,"Bitte alle Felder ausfüllen", "FAIL!!",JOptionPane.OK_CANCEL_OPTION);
+				  JOptionPane.showMessageDialog(null,"Please fill in all required fields", "Error!",JOptionPane.OK_CANCEL_OPTION);
 				  
-				 }else{ // Hier kommt noch der Code für die weitere Verwendung der Strings
+				 }else{ UserSession.getInstance().Registration(userName, passWord, firstName, lastName, dateOfBirth);
 					 
 					 
 					 GuiController.Loginstarter();
@@ -116,35 +112,46 @@ public class Register {
 		frame.getContentPane().add(btnRegister);
 
 		txtpnUsername = new JTextPane();
+		txtpnUsername.setEditable(false);
 		txtpnUsername.setBackground(SystemColor.control);
 		txtpnUsername.setText("Username:");
 		txtpnUsername.setBounds(96, 50, 72, 20);
 		frame.getContentPane().add(txtpnUsername);
 
 		textPane_1 = new JTextPane();
+		textPane_1.setEditable(false);
 		textPane_1.setBackground(SystemColor.control);
 		textPane_1.setText("Password:");
 		textPane_1.setBounds(96, 81, 72, 20);
 		frame.getContentPane().add(textPane_1);
 
 		textPane_2 = new JTextPane();
+		textPane_2.setEditable(false);
 		textPane_2.setBackground(SystemColor.control);
 		textPane_2.setText("First name:");
 		textPane_2.setBounds(96, 112, 72, 20);
 		frame.getContentPane().add(textPane_2);
 
 		textPane_3 = new JTextPane();
+		textPane_3.setEditable(false);
 		textPane_3.setBackground(SystemColor.control);
 		textPane_3.setText("Last name:");
 		textPane_3.setBounds(96, 143, 72, 20);
 		frame.getContentPane().add(textPane_3);
 
 		textPane = new JTextPane();
+		textPane.setEditable(false);
 		textPane.setBackground(SystemColor.control);
 		textPane.setText("Date of birth:");
 		textPane.setBounds(96, 174, 80, 20);
 		frame.getContentPane().add(textPane);
+		
+		JTextPane txtpnYmd = new JTextPane();
+		txtpnYmd.setBackground(SystemColor.control);
+		txtpnYmd.setEditable(false);
+		txtpnYmd.setText("y.m.d (1989.06.15)");
+		txtpnYmd.setBounds(274, 174, 125, 20);
+		frame.getContentPane().add(txtpnYmd);
 	}
-
 }
 
