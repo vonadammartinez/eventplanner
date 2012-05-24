@@ -27,19 +27,10 @@ public final class UserSession {
 		currentUser = udao.login(userName, passWord);
 	}
 	
-	public void Registration(User u){
+	public void Registration(String userName,String passWord,String firstName,String lastName,String dateOfBirth){
 		
+		currentUser = udao.registration(userName, passWord, firstName, lastName, dateOfBirth);
 		
-		/*if (){
-			JOptionPane.showMessageDialog(null,"Registration failed! User or UserName already exists", "Error",JOptionPane.OK_CANCEL_OPTION);
-
-			
-		}else{
-			
-			
-		}
-		
-		*/
 	}
 	public static UserSession getInstance() {
 		if (instance == null){
@@ -49,6 +40,10 @@ public final class UserSession {
 		return instance;
 		
 		
+	}
+
+	public User getCurrentUser() {
+		return currentUser;
 	}
 	
 
