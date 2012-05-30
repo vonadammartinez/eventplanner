@@ -16,8 +16,8 @@ public class UserDAO {
 
 	public User login(String userName, String passWord) {
 		answer = DB_Connector
-				.request("SELECT * FROM tbl_user WHERE username = " + userName
-						+ " AND password = " + passWord);
+				.request("SELECT * FROM tbl_user WHERE username = '" + userName
+						+ "' AND password = '" + passWord + "'");
 		if (answer == "") {
 			return null;
 
