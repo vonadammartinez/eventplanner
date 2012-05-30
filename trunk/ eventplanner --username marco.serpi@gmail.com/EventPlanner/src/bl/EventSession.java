@@ -13,4 +13,8 @@ public class EventSession {
 		edao.create(name, UserSession.getInstance().getCurrentUser(), date,
 				location, ageRestriction);
 	}
+	
+	public void listEvent(String filterart, String filterwert){
+		edao.list(filterart, filterwert);
+	}
 }
