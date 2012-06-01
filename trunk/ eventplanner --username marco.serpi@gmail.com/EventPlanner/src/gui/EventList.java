@@ -16,6 +16,8 @@ import bl.UserSession;
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import javax.swing.JScrollBar;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class EventList {
 
@@ -23,6 +25,8 @@ public class EventList {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTable table;
+	private JTable table_1;
 
 	/**
 	 * Launch the application.
@@ -116,20 +120,12 @@ public class EventList {
 		});
 		btnClose.setBounds(491, 388, 89, 23);
 		frame.getContentPane().add(btnClose);
+		// Do isch das verhuerte JTable ^^ do e guete link drzue : http://www.java-forum.org/bilder-gui-damit-zusammenhaengt/4841-jtable-ubersicht-teil-1-teil-8-a.html
+		table_1 = new JTable();
+		table_1.setBounds(29, 51, 442, 250);
+		frame.getContentPane().add(table_1);
 		
-		JList list = new JList();
-		list.setModel(new AbstractListModel() {
-			
-			String[] values = new String[] {"asd", "asd", "asd"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		list.setBounds(29, 29, 412, 311);
-		frame.getContentPane().add(list);
+		
 	
 	}
 }

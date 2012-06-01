@@ -2,11 +2,15 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
+import db.LocationDAO;
+
 import bl.EventSession;
 import bl.GuiController;
+import bl.LocationSession;
 
 public class CreateEvent {
 
@@ -52,10 +56,18 @@ public class CreateEvent {
 		JLabel lblLocation = new JLabel("Location: ");
 		lblLocation.setBounds(45, 130, 79, 14);
 		frame.getContentPane().add(lblLocation);
-
-		final JComboBox comboBox = new JComboBox();
+		
+		// Do isch s erschte problem , s befülle vo dere huere JComboBox und zwar eso dass wenn mr e neui location iträge si denn au vorhande isch
+		//s witzige an dem ganze seich.. am schluss bim uswähle bruche mr denn wiedr es object -.-
+		
+		 LocationDAO ldao = new LocationDAO();
+		 
+		String list = ldao.getLocations();
+		ArrayList <Location> locationlist = 
+		JComboBox comboBox = new JComboBox(); 
 		comboBox.setBounds(45, 155, 240, 20);
 		frame.getContentPane().add(comboBox);
+		
 
 		JButton btnRegisterNewLocation = new JButton("Register new Location");
 		btnRegisterNewLocation.addActionListener(new ActionListener() {
