@@ -3,7 +3,7 @@ package gui;
 import javax.swing.table.AbstractTableModel;
 
 import model.Event;
-
+// Do söll schins denn s ganze model entsoh mit de date vom event so dass mrs im gui azeige chöi 
 public class TableModelEvent extends AbstractTableModel {
 	
 	//ArrayList<Event> events = ...
@@ -15,7 +15,7 @@ public class TableModelEvent extends AbstractTableModel {
 	@Override
 	public int getColumnCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 3;
 	}
 
 	@Override
@@ -27,10 +27,10 @@ public class TableModelEvent extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub
-		Event e = event.get(rowIndex);
-		if(columnIndex == 1) {
-			return e.getName();
-		}
+//		Event e = event.get(rowIndex);
+		//if(columnIndex == 1) {
+			//return e.getName();
+		//}
 		return null;
 	}
 

@@ -149,8 +149,8 @@ public class Register {
 		JTextPane txtpnYmd = new JTextPane();
 		txtpnYmd.setBackground(SystemColor.control);
 		txtpnYmd.setEditable(false);
-		txtpnYmd.setText("y.m.d (1989.06.15)");
-		txtpnYmd.setBounds(274, 174, 125, 20);
+		txtpnYmd.setText("yyyy.mm.dd (1989.06.15)");
+		txtpnYmd.setBounds(274, 174, 150, 20);
 		frame.getContentPane().add(txtpnYmd);
 	}
 }
