@@ -7,9 +7,13 @@ import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import bl.GuiController;
+import javax.swing.JList;
+import javax.swing.AbstractListModel;
+import javax.swing.JScrollBar;
 
 public class EventList {
 
@@ -39,10 +43,6 @@ public class EventList {
 		frame.setBounds(100, 100, 640, 480);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-
-		JEditorPane editorPane = new JEditorPane();
-		editorPane.setBounds(29, 29, 435, 318);
-		frame.getContentPane().add(editorPane);
 
 		JLabel lblFilter = new JLabel("Filter");
 		lblFilter.setBounds(491, 29, 95, 23);
@@ -114,6 +114,21 @@ public class EventList {
 		});
 		btnClose.setBounds(491, 388, 89, 23);
 		frame.getContentPane().add(btnClose);
+		
+		JList list = new JList();
+		list.setModel(new AbstractListModel() {
+			
+			String[] values = new String[] {"asd", "asd", "asd"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
+		list.setBounds(29, 29, 412, 311);
+		frame.getContentPane().add(list);
+	
 	}
 }
 
