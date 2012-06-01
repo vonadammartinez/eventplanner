@@ -15,4 +15,8 @@ public class LocationSession {
 		ldao.create(name, place);
 		
 	}
+	
+	public void getLocations(){
+		ldao.getLocations();
+	}
 }
