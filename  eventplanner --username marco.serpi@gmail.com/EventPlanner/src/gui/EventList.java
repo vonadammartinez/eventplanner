@@ -11,6 +11,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import bl.GuiController;
+import bl.UserSession;
+
 import javax.swing.JList;
 import javax.swing.AbstractListModel;
 import javax.swing.JScrollBar;
@@ -102,7 +104,7 @@ public class EventList {
 		btnCreateNewEvent.setBounds(187, 388, 128, 23);
 		frame.getContentPane().add(btnCreateNewEvent);
 
-		JLabel lblLoggedInAs = new JLabel("Logged in as: --");
+		JLabel lblLoggedInAs = new JLabel("Logged in as: " + UserSession.getInstance().getCurrentUser().getUserName());
 		lblLoggedInAs.setBounds(491, 4, 95, 14);
 		frame.getContentPane().add(lblLoggedInAs);
 
