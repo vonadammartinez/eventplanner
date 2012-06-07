@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import model.User;
+
 import bl.GuiController;
 import bl.UserSession;
 
@@ -16,6 +18,7 @@ public class Login {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextPane txtpnPassword;
+	private User u;
 
 
 	/**
@@ -60,8 +63,8 @@ public class Login {
 					JOptionPane.showMessageDialog(null,"Please fill in all required fields", "Error!",JOptionPane.OK_CANCEL_OPTION);
 				} else {
 
-					UserSession.getInstance().login(userName, passWord);
-					if (userName.equals(null)) {
+					u = UserSession.getInstance().login(userName, passWord);
+					if (u == null) {
 						JOptionPane.showMessageDialog(null,
 								"Login failed! Wrong Username or Password",
 								"Error", JOptionPane.OK_CANCEL_OPTION);

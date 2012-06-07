@@ -38,16 +38,17 @@ public class UserDAO {
 	public User registration(String userName, String passWord,
 			String firstName, String lastName, String dateOfBirth) {
 		answer = DB_Connector
-				.request("SELECT * FROM tbl_user WHERE username = " + userName);
+				.request("SELECT * FROM tbl_user WHERE username = '" + userName + "'");
 
 		if (answer == "") {
 			DB_Connector
-					.request("INSERT INTO tbl_user(username, password, firstname, lastname, dateofbirth) VALUES ("
+					.request2("INSERT INTO tbl_user(username, password, firstname, lastname, dateofbirth) VALUES ('"
 							+ userName
+							+ "', '"
 							+ passWord
+							+ "', '"
 							+ firstName
-							+ lastName
-							+ dateOfBirth + ")");
+							+ "', '" + lastName + "', '" + dateOfBirth + "')");
 			User u = new User(userName, passWord, firstName, lastName,
 					dateOfBirth);
 			return u;
