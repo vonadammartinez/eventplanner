@@ -19,6 +19,8 @@ import javax.swing.JScrollBar;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import model.Event;
+
 public class EventList {
 
 	private JFrame frame;
@@ -95,20 +97,31 @@ public class EventList {
 		frame.getContentPane().add(lblSelectAnEvent);
 
 		JButton btnParticipate = new JButton("Participate");
+		btnParticipate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int i = table_1.getSelectedRow();
+				Event e2 = ((TableModelEvent)table_1.getModel()).getObjectbyIndex(i);
+				System.out.println(e2.getName());
+			}
+		});
+		
+		
+
 		btnParticipate.setBounds(29, 388, 89, 23);
 		frame.getContentPane().add(btnParticipate);
 
 		JButton btnCreateNewEvent = new JButton("Create new event");
 		btnCreateNewEvent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			GuiController.CreateEventstarter();
-			frame.dispose();
+				GuiController.CreateEventstarter();
+				frame.dispose();
 			}
 		});
 		btnCreateNewEvent.setBounds(187, 388, 128, 23);
 		frame.getContentPane().add(btnCreateNewEvent);
 
-		JLabel lblLoggedInAs = new JLabel("Logged in as: " + UserSession.getInstance().getCurrentUser().getUserName());
+		JLabel lblLoggedInAs = new JLabel("Logged in as: "
+				+ UserSession.getInstance().getCurrentUser().getUserName());
 		lblLoggedInAs.setBounds(491, 4, 95, 14);
 		frame.getContentPane().add(lblLoggedInAs);
 
@@ -120,13 +133,10 @@ public class EventList {
 		});
 		btnClose.setBounds(491, 388, 89, 23);
 		frame.getContentPane().add(btnClose);
-		// Do isch das verhuerte JTable ^^ do e guete link drzue : http://www.java-forum.org/bilder-gui-damit-zusammenhaengt/4841-jtable-ubersicht-teil-1-teil-8-a.html
 		table_1 = new JTable();
+		table_1.setModel(new TableModelEvent());
 		table_1.setBounds(29, 51, 442, 250);
 		frame.getContentPane().add(table_1);
-		
-		
-	
+
 	}
 }
-

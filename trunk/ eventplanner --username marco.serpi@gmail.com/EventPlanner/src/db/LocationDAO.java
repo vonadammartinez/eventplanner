@@ -1,5 +1,7 @@
 package db;
 
+import java.io.IOException;
+
 import model.Location;
 
 public class LocationDAO {
@@ -12,7 +14,7 @@ public class LocationDAO {
 
 		if (answer == "") {
 			DB_Connector
-					.request("INSERT INTO tbl_location (Name, Place) VALUES ('"
+					.request2("INSERT INTO tbl_location (Name, Place) VALUES ('"
 							+ name + "', '" + place + "')");
 			Location l = new Location(name, place);
 			return l;
@@ -25,5 +27,9 @@ public class LocationDAO {
 	public String getLocations() {
 		answer = DB_Connector.request("SELECT Name, Place FROM tbl_location");
 		return answer;
+		
+		try {
+			
+		} catch(IOException e){}
 	}
 }

@@ -23,16 +23,15 @@ public class EventDAO {
 						+ location.getName() + "'");
 		if (answer == null) {
 			DB_Connector
-					.request("INSERT INTO tbl_event (name, tbl_user_username, date, tbl_location_idtbl_location, agerestriction) VALUES('"
+					.request2("INSERT INTO tbl_event (name, tbl_user_username, date, tbl_location_idtbl_location, agerestriction) VALUES('"
 							+ name
 							+ "', '"
 							+ organisator
 							+ "', '"
 							+ date
-							+ "', '" + locID + "', " + ageRestriction + ")");
-			Event e = new Event(name, organisator, date, location,
-					ageRestriction);
-			return e;
+							+ "', '" + locID + "', " + ageRestriction + "')");
+			return new Event(name, organisator, date, location, ageRestriction);
+
 		} else {
 			return null;
 		}
@@ -62,7 +61,7 @@ public class EventDAO {
 
 		if (answer == null) {
 			DB_Connector
-					.request("INSERT INTO tbl_registration (tbl_user_username, tbl_event_id_event) VALUES('"
+					.request2("INSERT INTO tbl_registration (tbl_user_username, tbl_event_id_event) VALUES('"
 							+ userName + "', '" + eventID + ")");
 			return true;
 		} else {

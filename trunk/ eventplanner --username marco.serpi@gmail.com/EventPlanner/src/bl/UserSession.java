@@ -16,35 +16,36 @@ public final class UserSession {
 	private User currentUser;
 	private static UserSession instance = null;
 
-	
 	private UserDAO udao = new UserDAO();
 
-	private UserSession(){
-		
+	private UserSession() {
+
 	}
-	
-	public void login(String userName, String passWord){
+
+	public User login(String userName, String passWord) {
 		currentUser = udao.login(userName, passWord);
+		return currentUser;
 	}
-	
-	public void Registration(String userName,String passWord,String firstName,String lastName,String dateOfBirth){
-		
-		currentUser = udao.registration(userName, passWord, firstName, lastName, dateOfBirth);
-		
+
+	public void Registration(String userName, String passWord,
+			String firstName, String lastName, String dateOfBirth) {
+
+		currentUser = udao.registration(userName, passWord, firstName,
+				lastName, dateOfBirth);
+
 	}
+
 	public static UserSession getInstance() {
-		if (instance == null){
+		if (instance == null) {
 			instance = new UserSession();
-			
-		} 
+
+		}
 		return instance;
-		
-		
+
 	}
 
 	public User getCurrentUser() {
 		return currentUser;
 	}
-	
 
 }

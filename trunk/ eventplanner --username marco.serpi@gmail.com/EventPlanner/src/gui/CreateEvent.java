@@ -103,7 +103,7 @@ public class CreateEvent {
 				String name = textField.getText();
 				String date = textField_1.getText();
 				//Location location = comboBox.getSelectedItem(Location);
-				 int ageRestriction = comboBox_1.getSelectedIndex();
+				 int ageRestriction = Integer.parseInt(comboBox_1.getSelectedItem().toString());
 				 
 				
 				
