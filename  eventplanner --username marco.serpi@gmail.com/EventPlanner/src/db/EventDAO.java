@@ -38,27 +38,80 @@ public class EventDAO {
 		}
 	}
 
-	public ArrayList<Event> list(String filterart, String filterwert) {
+	public ArrayList<Event> list(String filter/* name */,
+			String filter1/* location */, String filter2/* date */) {
 
-		answer = DB_Connector.request("SELECT * FROM tbl_event WHERE "
-				+ filterart + " = '" + filterwert + "'");
+		int locIDcount;
+		String query = "SELECT * FROM tbl_event WHERE tbl_location_idtbl_location like ";
+
+		if (filter == "" && filter1 == "" && filter2 == "") {
+			answer = DB_Connector.request("SELECT * FROM tbl_event");
+		} else if (filter1 == "" && filter2 == "") {
+			answer = DB_Connector
+					.request("SELECT * FROM tbl_event WHERE name like '"
+							+ filter + "'");
+		} else if (filter == "" && filter2 == "") {
+			locID = DB_Connector
+					.request("SELECT idtbl_location FROM tbl_event WHERE Name like '"
+							+ filter1 + "'");
+			if (locID == "") {
+				answer = DB_Connector.request("SELECT * FROM tbl_event");
+			} else {
+				StringTokenizer st5 = new StringTokenizer(locID);
+				locIDcount = st5.countTokens();
+				for (int i = 0; i < locIDcount; i++) {
+					query += "'" + st5.nextToken() + "' ,";
+				}
+				answer = DB_Connector.request(query);
+				query = "SELECT * FROM tbl_event WHERE tbl_location_idtbl_location like ";
+			}
+
+		} else if (filter == "" && filter1 == "") {
+			locID = DB_Connector
+					.request("SELECT * FROM tbl_event WHERE date = '" + filter2
+							+ "'");
+		} else if (filter == "") {
+			locID = DB_Connector
+					.request("SELECT idtbl_location FROM tbl_event WHERE Name like '"
+							+ filter1 + "'");
+			if (locID == "") {
+				answer = DB_Connector
+						.request("SELECT * FROM tbl_event WHERE date = '"
+								+ filter2 + "'");
+			} else {
+				StringTokenizer st5 = new StringTokenizer(locID);
+				locIDcount = st5.countTokens();
+				for (int i = 0; i < locIDcount; i++) {
+					query += "'" + st5.nextToken() + "' ,";
+				}
+				answer = DB_Connector.request(query + "AND date = '" + filter2
+						+ "'");
+				query = "SELECT * FROM tbl_event WHERE tbl_location_idtbl_location like ";
+			}
+		} else if (filter1 == "") {
+			answer = DB_Connector
+					.request("SELECT * FROM tbl_event WHERE name like '"
+							+ filter + "' AND date = '" + filter2 + "'");
+		} else if (filter2 == ""){
+			
+		}
 
 		String name;
 		String username;
 		String date;
 		String locID;
 		int ageRestriction;
-		
+
 		String password;
 		String firstName;
 		String lastName;
 		String dateOfBirth;
-		
+
 		String locName;
 		String locPlace;
-		
+
 		String cache;
-		
+
 		ArrayList<Event> eventList = new ArrayList<Event>();
 
 		StringTokenizer st = new StringTokenizer(answer, "\n");
@@ -69,24 +122,29 @@ public class EventDAO {
 			st2.nextToken();
 			name = st2.nextToken();
 			username = st2.nextToken();
-			cache = DB_Connector.request("SELECT * FROM tbl_user WHERE username = '" + username + "'");
+			cache = DB_Connector
+					.request("SELECT * FROM tbl_user WHERE username = '"
+							+ username + "'");
 			StringTokenizer st3 = new StringTokenizer(cache);
 			st3.nextToken();
 			password = st3.nextToken();
 			firstName = st3.nextToken();
 			lastName = st3.nextToken();
 			dateOfBirth = st3.nextToken();
-			User u = new User(username, password, firstName, lastName, dateOfBirth);
+			User u = new User(username, password, firstName, lastName,
+					dateOfBirth);
 			date = st2.nextToken();
 			locID = st2.nextToken();
-			cache = DB_Connector.request("Select * FROM tbl_location WHERE idtbl_location = '" + locID + "'");
+			cache = DB_Connector
+					.request("Select * FROM tbl_location WHERE idtbl_location = '"
+							+ locID + "'");
 			StringTokenizer st4 = new StringTokenizer(cache);
 			st4.nextToken();
 			locName = st4.nextToken();
 			locPlace = st4.nextToken();
 			Location l = new Location(locName, locPlace);
 			ageRestriction = Integer.parseInt(st2.nextToken());
-			
+
 			eventList.add(new Event(name, u, date, l, ageRestriction));
 
 		}

@@ -21,8 +21,8 @@ public class EventSession {
 				location, ageRestriction);
 	}
 
-	public ArrayList<Event> listEvent(String filterart, String filterwert) {
-		return edao.list(filterart, filterwert);
+	public ArrayList<Event> listEvent(String filter, String filter1, String filter2) {
+		return edao.list(filter, filter1, filter2);
 	}
 
 	public void participate(String eventName, int ageRestriction)
