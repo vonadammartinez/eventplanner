@@ -1,6 +1,7 @@
 package db;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import model.Location;
 
@@ -24,12 +25,24 @@ public class LocationDAO {
 
 	}
 
-	public String getLocations() {
+	public ArrayList<Location> getLocations() {
 		answer = DB_Connector.request("SELECT Name, Place FROM tbl_location");
-		return answer;
-		
-		try {
-			
-		} catch(IOException e){}
+
+		String name;
+		String place;
+		ArrayList<Location> locList = new ArrayList<Location>();
+
+		StringTokenizer st = new StringTokenizer(answer, "\n");
+
+		while (st.hasMoreTokens()) {
+			String zeile = st.nextToken();
+			StringTokenizer st2 = new StringTokenizer(zeile, ",");
+			name = st2.nextToken();
+			place = st2.nextToken();
+			locList.add(new Location(name, place));
+
+		}
+
+		return locList;
 	}
 }

@@ -5,6 +5,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.AbstractListModel;
+import javax.swing.ComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 
 import db.LocationDAO;
 
@@ -62,8 +66,8 @@ public class CreateEvent {
 		
 		 LocationDAO ldao = new LocationDAO();
 		 
-		String list = ldao.getLocations();
-		ArrayList <Location> locationlist = 
+		
+		ArrayList<model.Location> locationlist = ldao.getLocations();
 		JComboBox comboBox = new JComboBox(); 
 		comboBox.setBounds(45, 155, 240, 20);
 		frame.getContentPane().add(comboBox);
