@@ -2,10 +2,12 @@ package bl;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import db.EventDAO;
 
+import model.Event;
 import model.Location;
 import model.User;
 
@@ -19,8 +21,8 @@ public class EventSession {
 				location, ageRestriction);
 	}
 
-	public void listEvent(String filterart, String filterwert) {
-		edao.list(filterart, filterwert);
+	public ArrayList<Event> listEvent(String filterart, String filterwert) {
+		return edao.list(filterart, filterwert);
 	}
 
 	public void participate(String eventName, int ageRestriction)

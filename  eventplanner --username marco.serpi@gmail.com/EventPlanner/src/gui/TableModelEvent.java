@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javax.swing.table.AbstractTableModel;
 
+import bl.EventSession;
+
 import model.Event;
 import model.Location;
 import model.User;
@@ -11,12 +13,10 @@ import model.User;
 public class TableModelEvent extends AbstractTableModel {
 	
 	ArrayList<Event> list = new ArrayList<Event>();
-	User u = new User("test", "test", "test", "test", "1991.07.30");
-	Location l = new Location("testloc", "testplace");
-	Event e = new Event("test", u, "2012.06.06", l, 18);
+	EventSession es = new EventSession();
 
-	public TableModelEvent() {
-		list.add(e);
+	public TableModelEvent(String filterart, String filterwert) {
+		list = es.listEvent(filterart, filterwert);
 	}
 
 	@Override

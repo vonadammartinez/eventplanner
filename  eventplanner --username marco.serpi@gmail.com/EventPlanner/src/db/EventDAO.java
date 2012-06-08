@@ -1,6 +1,7 @@
 package db;
 
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import model.Event;
 import model.Location;
@@ -37,13 +38,60 @@ public class EventDAO {
 		}
 	}
 
-	public String list(String filterart, String filterwert) {
+	public ArrayList<Event> list(String filterart, String filterwert) {
 
-		answer = DB_Connector
-				.request("SELECT EVENT.name, LOC.name, EVENT.date FROM tbl_event AS EVENT INNER JOIN tbl_location AS LOC WHERE"
-						+ filterart + " = '" + filterwert + "'");
+		answer = DB_Connector.request("SELECT * FROM tbl_event WHERE "
+				+ filterart + " = '" + filterwert + "'");
 
-		return answer;
+		String name;
+		String username;
+		String date;
+		String locID;
+		int ageRestriction;
+		
+		String password;
+		String firstName;
+		String lastName;
+		String dateOfBirth;
+		
+		String locName;
+		String locPlace;
+		
+		String cache;
+		
+		ArrayList<Event> eventList = new ArrayList<Event>();
+
+		StringTokenizer st = new StringTokenizer(answer, "\n");
+
+		while (st.hasMoreTokens()) {
+			String zeile = st.nextToken();
+			StringTokenizer st2 = new StringTokenizer(zeile, ",");
+			st2.nextToken();
+			name = st2.nextToken();
+			username = st2.nextToken();
+			cache = DB_Connector.request("SELECT * FROM tbl_user WHERE username = '" + username + "'");
+			StringTokenizer st3 = new StringTokenizer(cache);
+			st3.nextToken();
+			password = st3.nextToken();
+			firstName = st3.nextToken();
+			lastName = st3.nextToken();
+			dateOfBirth = st3.nextToken();
+			User u = new User(username, password, firstName, lastName, dateOfBirth);
+			date = st2.nextToken();
+			locID = st2.nextToken();
+			cache = DB_Connector.request("Select * FROM tbl_location WHERE idtbl_location = '" + locID + "'");
+			StringTokenizer st4 = new StringTokenizer(cache);
+			st4.nextToken();
+			locName = st4.nextToken();
+			locPlace = st4.nextToken();
+			Location l = new Location(locName, locPlace);
+			ageRestriction = Integer.parseInt(st2.nextToken());
+			
+			eventList.add(new Event(name, u, date, l, ageRestriction));
+
+		}
+
+		return eventList;
 	}
 
 	public boolean participate(String userName, String eventName,
