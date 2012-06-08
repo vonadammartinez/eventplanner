@@ -15,8 +15,8 @@ public class TableModelEvent extends AbstractTableModel {
 	ArrayList<Event> list = new ArrayList<Event>();
 	EventSession es = new EventSession();
 
-	public TableModelEvent(String filterart, String filterwert) {
-		list = es.listEvent(filterart, filterwert);
+	public TableModelEvent(String filter, String filter1, String filter2) {
+		list = es.listEvent(filter, filter1, filter2);
 	}
 
 	@Override

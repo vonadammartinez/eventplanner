@@ -134,7 +134,7 @@ public class EventList {
 		btnClose.setBounds(491, 388, 89, 23);
 		frame.getContentPane().add(btnClose);
 		table_1 = new JTable();
-		table_1.setModel(new TableModelEvent());
+		table_1.setModel(new TableModelEvent(textField.getText(), textField_1.getText(), textField_2.getText()));
 		table_1.setBounds(29, 51, 442, 250);
 		frame.getContentPane().add(table_1);
 

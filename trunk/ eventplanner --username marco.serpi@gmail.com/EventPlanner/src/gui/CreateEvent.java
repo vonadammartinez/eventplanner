@@ -5,16 +5,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
-import javax.swing.AbstractListModel;
-import javax.swing.ComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
 
 import db.LocationDAO;
 
 import bl.EventSession;
 import bl.GuiController;
 import bl.LocationSession;
+import bl.UserSession;
 
 public class CreateEvent {
 
@@ -60,18 +57,18 @@ public class CreateEvent {
 		JLabel lblLocation = new JLabel("Location: ");
 		lblLocation.setBounds(45, 130, 79, 14);
 		frame.getContentPane().add(lblLocation);
-		
-		// Do isch s erschte problem , s befülle vo dere huere JComboBox und zwar eso dass wenn mr e neui location iträge si denn au vorhande isch
-		//s witzige an dem ganze seich.. am schluss bim uswähle bruche mr denn wiedr es object -.-
-		
-		 LocationDAO ldao = new LocationDAO();
-		 
-		
+
+		// Do isch s erschte problem , s befülle vo dere huere JComboBox und
+		// zwar eso dass wenn mr e neui location iträge si denn au vorhande isch
+		// s witzige an dem ganze seich.. am schluss bim uswähle bruche mr denn
+		// wiedr es object -.-
+
+		LocationDAO ldao = new LocationDAO();
+
 		ArrayList<model.Location> locationlist = ldao.getLocations();
-		JComboBox comboBox = new JComboBox(); 
+		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(45, 155, 240, 20);
 		frame.getContentPane().add(comboBox);
-		
 
 		JButton btnRegisterNewLocation = new JButton("Register new Location");
 		btnRegisterNewLocation.addActionListener(new ActionListener() {
@@ -96,7 +93,8 @@ public class CreateEvent {
 		frame.getContentPane().add(lblAgeRestriction);
 
 		final JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"0", "16", "18", "21", "30"}));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "0", "16",
+				"18", "21", "30" }));
 		comboBox_1.setToolTipText("");
 		comboBox_1.setBounds(45, 298, 60, 20);
 		frame.getContentPane().add(comboBox_1);
@@ -106,22 +104,22 @@ public class CreateEvent {
 			public void actionPerformed(ActionEvent e) {
 				String name = textField.getText();
 				String date = textField_1.getText();
-				//Location location = comboBox.getSelectedItem(Location);
-				 int ageRestriction = Integer.parseInt(comboBox_1.getSelectedItem().toString());
-				 
-				
-				
-				
-				if (name.equals("") || date.equals("")){
-					
-					  JOptionPane.showMessageDialog(null,"Please fill in all required fields", "Error!",JOptionPane.OK_CANCEL_OPTION);
-				}else{
-							EventSession es = new EventSession();
-							//es.createEvent(name, date, location, ageRestriction);
-							//System.out.println("do man : " + ageRestriction);
-					
+				// Location location = comboBox.getSelectedItem(Location);
+				int ageRestriction = Integer.parseInt(comboBox_1
+						.getSelectedItem().toString());
+
+				if (name.equals("") || date.equals("")) {
+
+					JOptionPane.showMessageDialog(null,
+							"Please fill in all required fields", "Error!",
+							JOptionPane.OK_CANCEL_OPTION);
+				} else {
+					EventSession es = new EventSession();
+					// es.createEvent(name, date, location, ageRestriction);
+					// System.out.println("do man : " + ageRestriction);
+
 				}
-				
+
 			}
 		});
 		btnCreate.setBounds(45, 379, 89, 23);
@@ -137,9 +135,9 @@ public class CreateEvent {
 		btnDiscard.setBounds(196, 379, 89, 23);
 		frame.getContentPane().add(btnDiscard);
 
-		JLabel lblLoggedInAs = new JLabel("Logged in as:--");
+		JLabel lblLoggedInAs = new JLabel("Logged in as: "
+				+ UserSession.getInstance().getCurrentUser().getUserName());
 		lblLoggedInAs.setBounds(494, 11, 79, 14);
 		frame.getContentPane().add(lblLoggedInAs);
 	}
 }
-
