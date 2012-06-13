@@ -67,7 +67,7 @@ public class CreateEvent {
 
 		ArrayList<model.Location> locationlist = ldao.getLocations();
 		JComboBox comboBox = new JComboBox();
-		comboBox.addItem(locationlist);
+		comboBox.setRenderer(new ComboboxRenderer());
 		comboBox.setBounds(45, 155, 240, 20);
 		frame.getContentPane().add(comboBox);
 
