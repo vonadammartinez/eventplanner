@@ -1,5 +1,4 @@
 package model;
-import java.util.*;
 import model.User;
 
 public class Event {
@@ -8,7 +7,7 @@ public class Event {
 	private String date;
 	private Location location;
 	private int ageRestriction;
-	ArrayList participants = new ArrayList();
+
 	
 	public Event(String name, User organisator, String date, Location location, int ageRestriction){
 		this.name = name;

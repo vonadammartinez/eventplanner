@@ -48,7 +48,7 @@ public class Login {
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 
-		textField_1 = new JTextField();
+		textField_1 = new JPasswordField();
 		textField_1.setBounds(195, 85, 86, 20);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
