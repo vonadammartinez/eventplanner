@@ -6,7 +6,6 @@ import javax.swing.*;
 
 import bl.GuiController;
 import bl.LocationSession;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -59,9 +58,10 @@ public class Location {
            				  
            				 }else{ 
            					LocationSession ls = new LocationSession();
-           					ls.createLocation(name, place);
+           					model.Location loc;
+           					loc = ls.createLocation(name, place);
            					
-           					if (name.equals(null)||place.equals(null)){
+           					if (loc == null){
            						
            						
            					}else{
