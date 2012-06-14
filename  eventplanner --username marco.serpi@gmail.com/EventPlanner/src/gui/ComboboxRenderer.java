@@ -14,7 +14,7 @@ import model.Event;
 public class ComboboxRenderer extends BasicComboBoxRenderer {
 
 	/**
-	 * Diese Klasse erstellt die Anzeige der Objecte für die Comboboxen 
+	 * Diese Klasse erstellt die Anzeige der Objekte für die Comboboxen 
 	 */
 	private static final long serialVersionUID = 1L;
 
