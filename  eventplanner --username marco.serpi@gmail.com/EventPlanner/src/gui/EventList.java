@@ -175,7 +175,7 @@ public class EventList {
 		
 		JLabel lblOrganisator = new JLabel("Organisator");
 		lblOrganisator.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblOrganisator.setBounds(386, 33, 95, 14);
+		lblOrganisator.setBounds(361, 32, 95, 14);
 		frame.getContentPane().add(lblOrganisator);
 
 	}
