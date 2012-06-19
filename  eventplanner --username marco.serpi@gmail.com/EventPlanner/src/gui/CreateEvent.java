@@ -63,11 +63,7 @@ public class CreateEvent {
 		// s witzige an dem ganze seich.. am schluss bim uswähle bruche mr denn
 		// wiedr es object -.-
 
-		LocationDAO ldao = new LocationDAO();
-
-		ArrayList<model.Location> locationlist = ldao.getLocations();
-		JComboBox comboBox = new JComboBox();
-		comboBox.setRenderer(new ComboboxRenderer());
+		final JComboBox comboBox = new JComboBox(new ComboboxModel());
 		comboBox.setBounds(45, 155, 240, 20);
 		frame.getContentPane().add(comboBox);
 
@@ -94,10 +90,8 @@ public class CreateEvent {
 		frame.getContentPane().add(lblAgeRestriction);
 
 		final JComboBox comboBox_1 = new JComboBox();
-		//comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "0", "16",
-		//		"18", "21", "30" }));
-		comboBox_1.setModel(new ComboboxModel());
-		comboBox_1.setRenderer(new ComboboxRenderer());
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "0", "16",
+				"18", "21", "30" }));
 		comboBox_1.setToolTipText("");
 		comboBox_1.setBounds(45, 298, 60, 20);
 		frame.getContentPane().add(comboBox_1);
@@ -107,9 +101,9 @@ public class CreateEvent {
 			public void actionPerformed(ActionEvent e) {
 				String name = textField.getText();
 				String date = textField_1.getText();
-				// Location location = comboBox.getSelectedItem(Location);
-				int ageRestriction = Integer.parseInt(comboBox_1
-						.getSelectedItem().toString());
+				model.Location location = (model.Location) comboBox
+						.getSelectedItem();
+				String ageRestriction = comboBox_1.getSelectedItem().toString();
 
 				if (name.equals("") || date.equals("")) {
 
@@ -118,8 +112,10 @@ public class CreateEvent {
 							JOptionPane.OK_CANCEL_OPTION);
 				} else {
 					EventSession es = new EventSession();
-					// es.createEvent(name, date, location, ageRestriction);
-					// System.out.println("do man : " + ageRestriction);
+					System.out.println("do man : " + ageRestriction);
+					System.out.println(location.getName());
+					System.out.println(date);
+					es.createEvent(name, date, location, ageRestriction);
 
 				}
 

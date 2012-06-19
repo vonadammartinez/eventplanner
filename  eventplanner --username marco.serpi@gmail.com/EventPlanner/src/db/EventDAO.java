@@ -14,13 +14,14 @@ public class EventDAO {
 	private String eventID;
 
 	public Event create(String name, User organisator, String date,
-			Location location, int ageRestriction) {
-		answer = DB_Connector
-				.request("SELECT name FROM tbl_event WHERE location = '"
-						+ location.getName() + "' AND date = '" + date + "'");
+			Location location, String ageRestriction) {
 		locID = DB_Connector
 				.request("SELECT idtbl_location FROM tbl_location WHERE Name = '"
 						+ location.getName() + "'");
+		answer = DB_Connector
+				.request("SELECT name FROM tbl_event WHERE tbl_location_idtbl_location = '"
+						+ locID + "' AND date = '" + date + "'");
+
 		if (answer.isEmpty()) {
 			DB_Connector
 					.request2("INSERT INTO tbl_event (name, tbl_user_username, date, tbl_location_idtbl_location, agerestriction) VALUES('"
@@ -29,8 +30,9 @@ public class EventDAO {
 							+ organisator
 							+ "', '"
 							+ date
-							+ "', '" + locID + "', " + ageRestriction + "')");
-			return new Event(name, organisator, date, location, ageRestriction);
+							+ "', " + locID + ", " + ageRestriction + ")");
+			int ageRestr = Integer.parseInt(ageRestriction);
+			return new Event(name, organisator, date, location, ageRestr);
 
 		} else {
 			return null;

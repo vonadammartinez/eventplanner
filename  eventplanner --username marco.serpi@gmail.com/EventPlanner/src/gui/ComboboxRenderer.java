@@ -20,11 +20,11 @@ public class ComboboxRenderer extends BasicComboBoxRenderer {
 
 
 	public Component getListCellRendererComponent(JList list, Object value,
-			int index, boolean isselected, boolean selhasfokus) {
+			int index, boolean isSelected, boolean cellHasFocus) {
 		// TODO Auto-generated method stub
 		
 		
-		super.getListCellRendererComponent(list, value, index, isselected, selhasfokus);
+		super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 		
 		if(value != null && !value.equals(" ")){
 			this.setText(((model.Location)value).getName());

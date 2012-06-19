@@ -26,9 +26,7 @@ public class LocationDAO {
 	}
 
 	public ArrayList<Location> getLocations() {
-		answer = DB_Connector.request("SELECT Name, Place FROM tbl_location");
-		System.out.println(answer);
-		System.out.println("hey");
+		answer = DB_Connector.request("SELECT * FROM tbl_location");
 		String name;
 		String place;
 		ArrayList<Location> locList = new ArrayList<Location>();
@@ -38,6 +36,7 @@ public class LocationDAO {
 		while (st.hasMoreTokens()) {
 			String zeile = st.nextToken();
 			StringTokenizer st2 = new StringTokenizer(zeile, ",");
+			st2.nextToken();
 			name = st2.nextToken();
 			place = st2.nextToken();
 			Location loc = new Location(name, place);
