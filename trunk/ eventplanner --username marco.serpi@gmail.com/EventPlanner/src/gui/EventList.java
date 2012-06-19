@@ -22,6 +22,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import model.Event;
+import java.awt.Font;
 
 public class EventList {
 
@@ -86,6 +87,13 @@ public class EventList {
 		textField_2.setColumns(10);
 
 		JButton btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				table_1.setModel(new TableModelEvent(textField.getText(), textField_1.getText(), textField_2.getText()));
+				
+			}
+		});
 		btnSearch.setBounds(491, 278, 95, 23);
 		frame.getContentPane().add(btnSearch);
 
@@ -149,6 +157,26 @@ public class EventList {
 		JButton btnMyEvents = new JButton("My Events");
 		btnMyEvents.setBounds(361, 388, 110, 23);
 		frame.getContentPane().add(btnMyEvents);
+		
+		JLabel lblNewLabel = new JLabel("Event");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblNewLabel.setBounds(29, 33, 95, 14);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblLocation_1 = new JLabel("Location");
+		lblLocation_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblLocation_1.setBounds(141, 33, 95, 14);
+		frame.getContentPane().add(lblLocation_1);
+		
+		JLabel lblDate_1 = new JLabel("Date");
+		lblDate_1.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblDate_1.setBounds(261, 33, 95, 14);
+		frame.getContentPane().add(lblDate_1);
+		
+		JLabel lblOrganisator = new JLabel("Organisator");
+		lblOrganisator.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblOrganisator.setBounds(386, 33, 95, 14);
+		frame.getContentPane().add(lblOrganisator);
 
 	}
 }
