@@ -6,6 +6,7 @@ import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;
 
 import model.Event;
+import model.Location;
 
 import bl.EventSession;
 
@@ -22,6 +23,8 @@ public class ComboboxModel  extends AbstractListModel implements ComboBoxModel {
 	 */
 	
 	
+	
+	
 	private static final long serialVersionUID = 1L;
 	
 
@@ -30,6 +33,9 @@ public class ComboboxModel  extends AbstractListModel implements ComboBoxModel {
 	
 	Location location;
 	
+	public ComboboxModel (){
+		list = ls.getLocations();
+	}
 	@Override
 	public Object getElementAt(int index) {
 		

@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
@@ -10,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+import bl.EventSession;
 import bl.GuiController;
 import bl.UserSession;
 
@@ -60,7 +62,7 @@ public class EventList {
 		lblName.setBounds(491, 63, 46, 14);
 		frame.getContentPane().add(lblName);
 
-		textField = new JTextField();
+		textField = new JTextField("");
 		textField.setBounds(491, 88, 86, 20);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
@@ -69,7 +71,7 @@ public class EventList {
 		lblLocation.setBounds(491, 130, 46, 14);
 		frame.getContentPane().add(lblLocation);
 
-		textField_1 = new JTextField();
+		textField_1 = new JTextField("");
 		textField_1.setBounds(491, 155, 86, 20);
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
@@ -78,7 +80,7 @@ public class EventList {
 		lblDate.setBounds(491, 200, 46, 14);
 		frame.getContentPane().add(lblDate);
 
-		textField_2 = new JTextField();
+		textField_2 = new JTextField("");
 		textField_2.setBounds(491, 225, 86, 20);
 		frame.getContentPane().add(textField_2);
 		textField_2.setColumns(10);
@@ -101,7 +103,13 @@ public class EventList {
 			public void actionPerformed(ActionEvent e) {
 				int i = table_1.getSelectedRow();
 				Event e2 = ((TableModelEvent)table_1.getModel()).getObjectbyIndex(i);
-				System.out.println(e2.getName());
+				EventSession es = new EventSession();
+				try {
+					es.participate(e2.getName(), e2.getAgeRestriction());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		

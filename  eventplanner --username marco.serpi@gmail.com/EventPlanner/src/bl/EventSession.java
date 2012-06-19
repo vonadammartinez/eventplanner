@@ -27,10 +27,9 @@ public class EventSession {
 
 	public void participate(String eventName, int ageRestriction)
 			throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/mm/dd");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		long days;
 		Date today = new Date();
-
 		Date birthDate = dateFormat.parse(UserSession.getInstance()
 				.getCurrentUser().getDateOfBirth());
 		days = (today.getTime() - birthDate.getTime()) / (24 * 60 * 60 * 1000);
