@@ -59,7 +59,7 @@ public class EventList {
 		frame.getContentPane().add(lblFilter);
 
 		JLabel lblName = new JLabel("Name");
-		lblName.setBounds(491, 63, 46, 14);
+		lblName.setBounds(491, 63, 86, 14);
 		frame.getContentPane().add(lblName);
 
 		textField = new JTextField("");
@@ -68,7 +68,7 @@ public class EventList {
 		textField.setColumns(10);
 
 		JLabel lblLocation = new JLabel("Location");
-		lblLocation.setBounds(491, 130, 46, 14);
+		lblLocation.setBounds(491, 130, 86, 14);
 		frame.getContentPane().add(lblLocation);
 
 		textField_1 = new JTextField("");
@@ -77,7 +77,7 @@ public class EventList {
 		textField_1.setColumns(10);
 
 		JLabel lblDate = new JLabel("Date");
-		lblDate.setBounds(491, 200, 46, 14);
+		lblDate.setBounds(491, 200, 86, 14);
 		frame.getContentPane().add(lblDate);
 
 		textField_2 = new JTextField("");
