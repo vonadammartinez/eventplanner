@@ -1,5 +1,7 @@
 package bl;
 
+import java.util.ArrayList;
+
 import model.Location;
 import db.LocationDAO;
 
@@ -17,7 +19,7 @@ public class LocationSession {
 		
 	}
 	
-	public void getLocations(){
-		ldao.getLocations();
+	public ArrayList<Location> getLocations(){
+		return ldao.getLocations();
 	}
 }

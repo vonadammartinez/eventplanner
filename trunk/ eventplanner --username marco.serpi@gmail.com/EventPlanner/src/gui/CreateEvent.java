@@ -94,8 +94,10 @@ public class CreateEvent {
 		frame.getContentPane().add(lblAgeRestriction);
 
 		final JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "0", "16",
-				"18", "21", "30" }));
+		//comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "0", "16",
+		//		"18", "21", "30" }));
+		comboBox_1.setModel(new ComboboxModel());
+		comboBox_1.setRenderer(new ComboboxRenderer());
 		comboBox_1.setToolTipText("");
 		comboBox_1.setBounds(45, 298, 60, 20);
 		frame.getContentPane().add(comboBox_1);
