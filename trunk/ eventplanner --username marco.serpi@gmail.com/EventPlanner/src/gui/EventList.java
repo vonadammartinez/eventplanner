@@ -86,7 +86,7 @@ public class EventList {
 		textField_2.setColumns(10);
 
 		JButton btnSearch = new JButton("Search");
-		btnSearch.setBounds(491, 278, 89, 23);
+		btnSearch.setBounds(491, 278, 95, 23);
 		frame.getContentPane().add(btnSearch);
 
 		JLabel lblEvents = new JLabel("Events");
@@ -95,7 +95,7 @@ public class EventList {
 
 		JLabel lblSelectAnEvent = new JLabel(
 				"Select an event and press participate or create your own event!");
-		lblSelectAnEvent.setBounds(29, 358, 318, 14);
+		lblSelectAnEvent.setBounds(29, 358, 442, 14);
 		frame.getContentPane().add(lblSelectAnEvent);
 
 		JButton btnParticipate = new JButton("Participate");
@@ -115,7 +115,7 @@ public class EventList {
 		
 		
 
-		btnParticipate.setBounds(29, 388, 89, 23);
+		btnParticipate.setBounds(29, 388, 123, 23);
 		frame.getContentPane().add(btnParticipate);
 
 		JButton btnCreateNewEvent = new JButton("Create new event");
@@ -125,12 +125,12 @@ public class EventList {
 				frame.dispose();
 			}
 		});
-		btnCreateNewEvent.setBounds(187, 388, 128, 23);
+		btnCreateNewEvent.setBounds(187, 388, 148, 23);
 		frame.getContentPane().add(btnCreateNewEvent);
 
 		JLabel lblLoggedInAs = new JLabel("Logged in as: "
 				+ UserSession.getInstance().getCurrentUser().getUserName());
-		lblLoggedInAs.setBounds(491, 4, 95, 14);
+		lblLoggedInAs.setBounds(431, 4, 155, 14);
 		frame.getContentPane().add(lblLoggedInAs);
 
 		JButton btnClose = new JButton("Close");
@@ -145,6 +145,10 @@ public class EventList {
 		table_1.setModel(new TableModelEvent(textField.getText(), textField_1.getText(), textField_2.getText()));
 		table_1.setBounds(29, 51, 442, 250);
 		frame.getContentPane().add(table_1);
+		
+		JButton btnMyEvents = new JButton("My Events");
+		btnMyEvents.setBounds(361, 388, 110, 23);
+		frame.getContentPane().add(btnMyEvents);
 
 	}
 }
