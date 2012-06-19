@@ -21,7 +21,7 @@ public class TableModelEvent extends AbstractTableModel {
 
 	@Override
 	public int getColumnCount() {
-		return 3;
+		return 4;
 	}
 
 	@Override
@@ -42,6 +42,8 @@ public class TableModelEvent extends AbstractTableModel {
 			return e2.getLocation().getName();
 		} else if (columnIndex == 2){
 			return e2.getDate();
+		} else if (columnIndex == 3){
+			return e2.getOrganisator().getUserName();
 		}
 		return null;
 	}
