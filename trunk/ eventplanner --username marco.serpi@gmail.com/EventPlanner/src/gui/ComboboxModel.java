@@ -25,7 +25,7 @@ public class ComboboxModel  extends AbstractListModel implements ComboBoxModel {
 	
 	
 	
-	private static final long serialVersionUID = 1L;
+	//private static final long serialVersionUID = 1L;
 	
 
 	ArrayList<Location> list = new ArrayList<Location>();

@@ -36,7 +36,7 @@ public class DB_Connector {
 
 						answer += rs.getString(n) + ",";
 					}
-
+					answer += "\n";
 				}
 
 				rs.close();

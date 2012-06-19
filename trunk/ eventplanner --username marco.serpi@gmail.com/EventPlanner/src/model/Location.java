@@ -24,4 +24,8 @@ public class Location {
 	public void setPlace(String place) {
 		this.place = place;
 	}
+	
+	public String toString(){
+		return this.getName();
+	}
 }
