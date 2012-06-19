@@ -15,9 +15,9 @@ public class EventSession {
 
 	private EventDAO edao = new EventDAO();
 
-	public void createEvent(String name, String date, Location location,
+	public Event createEvent(String name, String date, Location location,
 			String ageRestriction) {
-		edao.create(name, UserSession.getInstance().getCurrentUser(), date,
+		return edao.create(name, UserSession.getInstance().getCurrentUser(), date,
 				location, ageRestriction);
 	}
 

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
+import model.Event;
+
 import db.LocationDAO;
 
 import bl.EventSession;
@@ -115,7 +117,16 @@ public class CreateEvent {
 					System.out.println("do man : " + ageRestriction);
 					System.out.println(location.getName());
 					System.out.println(date);
-					es.createEvent(name, date, location, ageRestriction);
+					Event e1 = es.createEvent(name, date, location, ageRestriction);
+					
+					if (e1 == null){
+						JOptionPane.showMessageDialog(null,
+								"Please choose another name for your event!", "Error!",
+								JOptionPane.OK_CANCEL_OPTION);
+					} else {
+						frame.dispose();
+						GuiController.EventListstarter();
+					}
 
 				}
 
